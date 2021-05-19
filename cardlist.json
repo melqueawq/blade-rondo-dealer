@@ -1,0 +1,509 @@
+[
+  {
+    "number": 0,
+    "name":"dummy card",
+    "type":"physical"
+  },
+
+  {
+    "number": 1,
+    "name":"斬撃剣",
+    "type":"physical"
+  },
+
+  {
+    "number": 2,
+    "name":"舞踏剣",
+    "type":"physical"
+  },
+  {
+    "number": 3,
+    "name":"闇黒剣",
+    "type":"physical"
+  },
+  {
+    "number": 4,
+    "name":"お気の毒の刃",
+    "type":"physical"
+  },
+  {
+    "number": 5,
+    "name":"意思砕きの鉈",
+    "type":"physical"
+  },
+  {
+    "number": 6,
+    "name":"絶対剣",
+    "type":"physical"
+  },
+  {
+    "number": 7,
+    "name":"イグノコスモス",
+    "type":"magical"
+  },
+  {
+    "number": 8,
+    "name":"ガウラミアズマ",
+    "type":"magical"
+  },
+  {
+    "number": 9,
+    "name":"フレアビスカス",
+    "type":"magical"
+  },
+  {
+    "number": 10,
+    "name":"マナティックルピナス",
+    "type":"magical"
+  },
+  {
+    "number": 11,
+    "name":"トリビュートリリィ",
+    "type":"magical"
+  },
+  {
+    "number": 12,
+    "name":"燐灯るエチュード",
+    "type":"support"
+  },
+  {
+    "number": 13,
+    "name":"慈しむウィスパー",
+    "type":"support"
+  },
+  {
+    "number": 14,
+    "name":"陽光導くカンタータ",
+    "type":"support"
+  },
+  {
+    "number": 15,
+    "name":"加速するロンド",
+    "type":"support"
+  },
+  {
+    "number": 16,
+    "name":"猛り狂うカデンツァ",
+    "type":"support"
+  },
+  {
+    "number": 17,
+    "name":"絶命棄却のダイヤモンド",
+    "type":"response"
+  },
+  {
+    "number": 18,
+    "name":"月光のルチル",
+    "type":"response"
+  },
+  {
+    "number": 19,
+    "name":"封厄のアゲート",
+    "type":"response"
+  },
+  {
+    "number": 20,
+    "name":"霧紡ぎのパール",
+    "type":"response"
+  },
+  {
+    "number": 21,
+    "name":"夜想剣",
+    "type":"physical"
+  },
+  {
+    "number": 22,
+    "name":"黒の剣",
+    "type":"physical"
+  },
+  {
+    "number": 23,
+    "name":"牙城崩しの槍",
+    "type":"physical"
+  },
+  {
+    "number": 24,
+    "name":"指揮剣",
+    "type":"physical"
+  },
+  {
+    "number": 25,
+    "name":"逢魔刻の大斧",
+    "type":"physical"
+  },
+  {
+    "number": 26,
+    "name":"ローズバレット",
+    "type":"magical"
+  },
+  {
+    "number": 27,
+    "name":"グリムスカビオス",
+    "type":"magical"
+  },
+  {
+    "number": 28,
+    "name":"ブラッディダリア",
+    "type":"magical"
+  },
+  {
+    "number": 29,
+    "name":"フィナーリア",
+    "type":"magical"
+  },
+  {
+    "number": 30,
+    "name":"包み込むボレロ",
+    "type":"support"
+  },
+  {
+    "number": 31,
+    "name":"高揚するカノン",
+    "type":"support"
+  },
+  {
+    "number": 32,
+    "name":"開花するスケルツォ",
+    "type":"support"
+  },
+  {
+    "number": 33,
+    "name":"窓辺立つミュージカル",
+    "type":"support"
+  },
+  {
+    "number": 34,
+    "name":"切り刻むエキストラ",
+    "type":"support"
+  },
+  {
+    "number": 35,
+    "name":"奔走するバーレスク",
+    "type":"support"
+  },
+  {
+    "number": 36,
+    "name":"嘲笑するピカレスク",
+    "type":"support"
+  },
+  {
+    "number": 37,
+    "name":"明滅のアレキサンドライト",
+    "type":"response"
+  },
+  {
+    "number": 38,
+    "name":"事象透過のアメジスト",
+    "type":"response"
+  },
+  {
+    "number": 39,
+    "name":"身代わりのトルマリン",
+    "type":"response"
+  },
+  {
+    "number": 40,
+    "name":"静寂のクリスタル",
+    "type":"response"
+  },
+  {
+    "number": 41,
+    "name":"徴税剣",
+    "type":"physical"
+  },
+  {
+    "number": 42,
+    "name":"絢爛剣",
+    "type":"physical"
+  },
+  {
+    "number": 43,
+    "name":"紋章剣",
+    "type":"physical"
+  },
+  {
+    "number": 44,
+    "name":"魔導剣",
+    "type":"physical"
+  },
+  {
+    "number": 45,
+    "name":"骨響きの鉈",
+    "type":"physical"
+  },
+  {
+    "number": 46,
+    "name":"重撃剣",
+    "type":"physical"
+  },
+  {
+    "number": 47,
+    "name":"ルミノブーケット",
+    "type":"magical"
+  },
+  {
+    "number": 48,
+    "name":"クロウリーシラン",
+    "type":"magical"
+  },
+  {
+    "number": 49,
+    "name":"ディスペルワイス",
+    "type":"magical"
+  },
+  {
+    "number": 50,
+    "name":"パイロガーランド",
+    "type":"magical"
+  },
+  {
+    "number": 51,
+    "name":"満ち溢れるキャロル",
+    "type":"support"
+  },
+  {
+    "number": 52,
+    "name":"駆り立てるマーチ",
+    "type":"support"
+  },
+  {
+    "number": 53,
+    "name":"喚き立てるファルセット",
+    "type":"support"
+  },
+  {
+    "number": 54,
+    "name":"残響するノクターン",
+    "type":"support"
+  },
+  {
+    "number": 55,
+    "name":"振り撒くラプソディー",
+    "type":"support"
+  },
+  {
+    "number": 56,
+    "name":"存在穿つスクリーム",
+    "type":"support"
+  },
+  {
+    "number": 57,
+    "name":"迷い道のトパーズ",
+    "type":"response"
+  },
+  {
+    "number": 58,
+    "name":"聖域のフローライト",
+    "type":"response"
+  },
+  {
+    "number": 59,
+    "name":"断絶のラピスラズリ",
+    "type":"response"
+  },
+  {
+    "number": 60,
+    "name":"因果検閲のサファイア",
+    "type":"response"
+  },
+  {
+    "number": 61,
+    "name":"氷刃剣",
+    "type":"physical"
+  },
+  {
+    "number": 62,
+    "name":"灰の剣",
+    "type":"physical"
+  },
+  {
+    "number": 63,
+    "name":"銀嶺槍",
+    "type":"physical"
+  },
+  {
+    "number": 64,
+    "name":"露払いの白刃",
+    "type":"physical"
+  },
+  {
+    "number": 65,
+    "name":"圧壊剣",
+    "type":"physical"
+  },
+  {
+    "number": 66,
+    "name":"アイシクルドロップ",
+    "type":"magical"
+  },
+  {
+    "number": 67,
+    "name":"ヴォルテクスビオラ",
+    "type":"magical"
+  },
+  {
+    "number": 68,
+    "name":"スパイラルセージ",
+    "type":"magical"
+  },
+  {
+    "number": 69,
+    "name":"テンペストアイリス",
+    "type":"magical"
+  },
+  {
+    "number": 70,
+    "name":"ハイドレンジアの魔剣",
+    "type":"composite"
+  },
+  {
+    "number": 71,
+    "name":"結実するドルチェ",
+    "type":"composite"
+  },
+  {
+    "number": 72,
+    "name":"凍りつくハウル",
+    "type":"support"
+  },
+  {
+    "number": 73,
+    "name":"調停するカンパネラ",
+    "type":"support"
+  },
+  {
+    "number": 74,
+    "name":"遠吠えるクレシェンド",
+    "type":"support"
+  },
+  {
+    "number": 75,
+    "name":"回遊するルフラン",
+    "type":"support"
+  },
+  {
+    "number": 76,
+    "name":"刻み記すラメント",
+    "type":"support"
+  },
+  {
+    "number": 77,
+    "name":"束縛のスフェーン",
+    "type":"response"
+  },
+  {
+    "number": 78,
+    "name":"清冽のムーンストーン",
+    "type":"response"
+  },
+  {
+    "number": 79,
+    "name":"ぬくもりのアンバー",
+    "type":"response"
+  },
+  {
+    "number": 80,
+    "name":"極光の空のオパール",
+    "type":"response"
+  },
+  {
+    "number": 81,
+    "name":"偽典斬撃剣",
+    "type":"physical"
+  },
+  {
+    "number": 82,
+    "name":"碧光剣",
+    "type":"physical"
+  },
+  {
+    "number": 83,
+    "name":"片腹打ちの杭",
+    "type":"physical"
+  },
+  {
+    "number": 84,
+    "name":"羽ばたきの刃",
+    "type":"physical"
+  },
+  {
+    "number": 85,
+    "name":"金剛剣",
+    "type":"physical"
+  },
+  {
+    "number": 86,
+    "name":"怒涛槍",
+    "type":"physical"
+  },
+  {
+    "number": 87,
+    "name":"秘蹟剣",
+    "type":"physical"
+  },
+  {
+    "number": 88,
+    "name":"ぶっつけ鉈",
+    "type":"physical"
+  },
+  {
+    "number": 89,
+    "name":"赤熱剣",
+    "type":"physical"
+  },
+  {
+    "number": 90,
+    "name":"縛鎖豪腕",
+    "type":"physical"
+  },
+  {
+    "number": 91,
+    "name":"虹の彼方へ",
+    "type":"composite"
+  },
+  {
+    "number": 92,
+    "name":"天聖に弓引く者なく",
+    "type":"composite"
+  },
+  {
+    "number": 93,
+    "name":"湧き出づるフーガ",
+    "type":"support"
+  },
+  {
+    "number": 94,
+    "name":"迸るジルベスタ",
+    "type":"support"
+  },
+  {
+    "number": 95,
+    "name":"夢見るソルフェージュ",
+    "type":"support"
+  },
+  {
+    "number": 96,
+    "name":"下令するアリア",
+    "type":"support"
+  },
+  {
+    "number": 97,
+    "name":"泥濘のヘリオドール",
+    "type":"response"
+  },
+  {
+    "number": 98,
+    "name":"障壁編みのスピネル",
+    "type":"response"
+  },
+  {
+    "number": 99,
+    "name":"錆這いのモルガナイト",
+    "type":"response"
+  },
+  {
+    "number": 100,
+    "name":"干渉拒絶のジェイド",
+    "type":"response"
+  }
+]
