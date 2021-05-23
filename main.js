@@ -46,7 +46,7 @@ client.on('message', async message =>
   console.log('reply received!');
   
   if(args.length === 4){
-    sendHand(args)
+    sendHand(message.channel, args)
   }else{
     sendHelp(message.channel);       
   }
@@ -67,16 +67,16 @@ function sendHelp(channel){
   let message = `
 __**Blade Rondo Dealerの使い方**__
 :crossed_swords: 対戦を行う場合
-\`@Blade_Rondo_dealer#6661 [ルール] [対戦者1] [対戦者2]\`
+\`@Blade_Rondo_dealer [ルール] [対戦者1] [対戦者2]\`
 例えば、MariaとSonyaでBlade Rondo(無印)の対戦を行う場合は
-> \`@Blade_Rondo_dealer#6661 BladeRondo @Maria @Sonya\`
+> \`@Blade_Rondo_dealer# BladeRondo @Maria @Sonya\`
 のように入力してください。
 
 :question: このヘルプを表示
-\`@Blade_Rondo_dealer#6661\`
+\`@Blade_Rondo_dealer\`
 
 __**ルールの指定方法**__
-適用したいルールに応じて[ルール]の部分を置き換えてください。
+適用したいルールに応じて[ルール]の部分を置き換えてください。(大文字小文字は問いません)
 > ・Blade Rondo(無印) -> \` BR \` または \` BladeRondo \`
 > ・Night Theater -> \` NT \` または \` NightTheater \`
 > ・Grim Garden -> \` GG \` または \` GrimGarden \`
@@ -88,38 +88,44 @@ __**ルールの指定方法**__
 }
 
 // 初期配布カードを送信する
-function sendHand(args){
+function sendHand(channel, args){
   let rule = args[1];
-  let player1 = args[2].match(/\d+/)[0];
-  let player2 = args[3].match(/\d+/)[0];
+  let player = [args[2].match(/\d+/)[0], args[3].match(/\d+/)[0]];
   
   let cardset = [];
+  let cardsetName = "";
   let deck = [];
   
   // カードセット選択
-  switch(rule){
-    case 'BR':
-    case 'BladeRondo':
+  switch(rule.toLowerCase()){
+    case 'br':
+    case 'bladerondo':
       cardset = cardsets['bladeRondo'];
+      cardsetName = "Blade Rondo";
       break;
-    case 'NT':
-    case 'NightTheater':
+    case 'nt':
+    case 'nighttheater':
       cardset = cardsets['nightTheater'];
+      cardsetName = "Night Theater";
       break;
-    case 'GG':
-    case 'GrimGarden':
+    case 'gg':
+    case 'grimgarden':
       cardset = cardsets['grimGarden'];
+      cardsetName = "Grim Garden";
       break;
-    case 'FV':
-    case 'FrostVeil':
+    case 'fv':
+    case 'frostveil':
       cardset = cardsets['frostVeil'];
+      cardsetName = "Frost Veil";
       break;
-    case 'LD':
-    case 'LostDream':
+    case 'ld':
+    case 'lostdream':
       cardset = cardsets['lostDream'];
+      cardsetName = "Lost Dream";
       break;
     default:
-      break;
+      sendHelp(channel);
+      return;
   }
   
   // カードリストからデッキ取得
@@ -133,41 +139,27 @@ function sendHand(args){
       deck[r] = tmp;
   }
   
-  // 15枚ずつ配布
-  let p1Hand = deck.splice(0,15).sort((a,b)=>{return a.number < b.number ? -1 : 1});
-  let p2Hand = deck.splice(0,15).sort((a,b)=>{return a.number < b.number ? -1 : 1});
-  
-  // debug
-  console.log(p1Hand);
-  console.log(p2Hand);
-  
-  // 送信するテキストを生成
-  let p1HandText = "";
-  let p2HandText = "";
-  p1Hand.forEach(e =>{
-    // アイコン, カード番号, カード名, 改行コード
-    p1HandText += typeIcon(e.type) + 'No.' + ("000" + e.number).slice(-3) + "  " + e.name + "\n"
-  });
-  p2Hand.forEach(e =>{
-    p2HandText += typeIcon(e.type) + 'No.' + ("000" + e.number).slice(-3) + "  " + e.name + "\n"
-  });
-  
-  // メッセージ送信
-  client.users.fetch(player1)
+  // 2プレイヤー分繰り返す
+  for (let i = 0; i < 2; i++){
+    // 15枚ずつ配布  
+    let hand = [];
+    hand = deck.splice(0,15).sort((a,b)=>{return a.number < b.number ? -1 : 1});
+    
+    // 送信するテキストを生成
+    let message = "対戦ルール：" + cardsetName + "\n";
+    hand.forEach(e =>{
+      // アイコン, カード番号, カード名, 改行コード
+      message += typeIcon(e.type) + 'No.' + ("000" + e.number).slice(-3) + "  " + e.name + "\n"
+    });
+    
+    // メッセージ送信
+    client.users.fetch(player[i])
         .then(user => {
-          user.send(p1HandText)
-              .then(console.log)
+          user.send(message)
               .catch(console.error);
         })
         .catch(console.error);
-  
-  client.users.fetch(player2)
-        .then(user => {
-          user.send(p2HandText)
-              .then(console.log)
-              .catch(console.error);
-        })
-        .catch(console.error);
+  }
 }
 
 // アイコン取得

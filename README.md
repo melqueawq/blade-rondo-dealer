@@ -1,15 +1,46 @@
-# Discord sample bot working on glitch.com
+# Blade Rondo Dealer
+『Blade Rondo』シリーズのリモート対戦用DiscordBot
 
-## How to launch bot
+## これは何？
+[Domina Games](https://www.dominagames.com/)様から大好評販売中の2人対戦ボードゲームシリーズである
+『Blade Rondo』シリーズの対戦をDiscordを通じて行うためのbotです。
 
-1. Import this repository to `glitch.com`.
-1. Add this line to `.env` file; `DISCORD_BOT_TOKEN={YOUR_DISCORD_BOT_USER_TOKEN}`
-1. Just run on `glitch.com` !
+『Blade Rondo』シリーズは1つの山札を各プレイヤーに分け合う都合上リモート対戦はそのままでは不可能ですが、
+15枚をランダムに配るbotによってオンライン対戦を実現することができます。
 
-To get discord bot token, visit discord official develoer site; https://discordapp.com/developers/applications/me/
 
-## Running bot 24h on glitch.com
+## つかいかた
+1. 対戦を行うユーザー2人が同一の『Blade Rondo』シリーズ製品を用意する
+1. botをサーバーに招待する
+1. コマンドをテキストチャンネルに書き込む
+1. 各ユーザーのDMに初期手札が送信される
 
-Applications on `glitch.com` may sleep when keep no access for 5 minutes.
-You must ping application URL every 5 minutes to run your bot continuously.
-Using `uptimerobot.com` service is just good.
+## コマンドと引数
+```
+@Blade_Rondo_Dealer [作品名] [ユーザー1] [ユーザー2]
+```
+
+入力例：マリアとソーニャでBlade Rondo(無印)の対戦を行う場合  
+```
+@Blade_Rondo_Dealer BladeRondo @Maria @Sonya
+```  
+
+
+### 作品名
+対戦を行う作品名を指定できます。
+- Blade Rondo(無印)  
+  `BR` または `BladeRondo`
+- Night Theater  
+  `NT` または `NightTheater`
+- Grim Garden  
+  `GG` または `GrimGarden`
+- Frost Veil  
+  `FV` または `FrostVail`
+- Lost Dream  
+  `LD` または `LostDream`
+  
+大文字小文字は問いませんが、作品名全体を入力する際は単語間に空白を入れないようご注意ください。
+    
+### ユーザー名1、ユーザー名2
+対戦を行うユーザーを上記の入力例のように指定してください。
+
