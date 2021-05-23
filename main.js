@@ -6,6 +6,9 @@ http.createServer(function(request, response)
 	response.end('Discord bot is active now \n');
 }).listen(3000);
 
+// dotenv
+require('dotenv').config();
+
 // Discord bot implements
 const discord = require('discord.js');
 const client = new discord.Client();
