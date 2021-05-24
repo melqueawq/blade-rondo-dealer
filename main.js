@@ -81,6 +81,11 @@ __**Blade Rondo Dealerの使い方**__
 > \`@Blade_Rondo_dealer# BladeRondo @Maria @Sonya\`
 のように入力してください。
 
+:bread: パンを焼く
+\`@Blade_Rondo_dealer bake\`
+Bread Rondoで遊んでいる場合、上記コマンドでパンを焼くことができます。
+パンの山札は対戦ルールでBread Rondoを指定し直すたびにリセットされます。
+
 :question: このヘルプを表示
 \`@Blade_Rondo_dealer\`
 
