@@ -505,5 +505,105 @@
     "number": 100,
     "name":"干渉拒絶のジェイド",
     "type":"response"
+  },
+  {
+    "number": "b01",
+    "name":"鏡の魔術師 ショコラ",
+    "type":"physical"
+  },
+  {
+    "number": "b02",
+    "name":"灼熱の白雪姫 ロール",
+    "type":"physical"
+  },
+  {
+    "number": "b03",
+    "name":"秘密の解錠者 クロワ",
+    "type":"physical"
+  },
+  {
+    "number": "b04",
+    "name":"紺碧の魔法騎士 フラン",
+    "type":"physical"
+  },
+  {
+    "number": "b05",
+    "name":"白銀の人形遣い マリー",
+    "type":"magical"
+  },
+  {
+    "number": "b06",
+    "name":"片眼鏡の錬金術師 ソフィ",
+    "type":"magical"
+  },
+  {
+    "number": "b07",
+    "name":"神速の魔術師 アン",
+    "type":"magical"
+  },
+  {
+    "number": "b08",
+    "name":"パンの妖精 コッペン",
+    "type":"support"
+  },
+  {
+    "number": "b09",
+    "name":"加速する金庫",
+    "type":"support"
+  },
+  {
+    "number": "b10",
+    "name":"始まりの魔法少女 コロネ",
+    "type":"response"
+  },
+  {
+    "number": "b11",
+    "name":"漆黒の魔女 コロネ",
+    "type":"response"
+  },
+  {
+    "number": "b12",
+    "name":"純白の女王　コロネリア",
+    "type":"response"
+  },
+  {
+    "number": "b13",
+    "name":"パンゴーレム",
+    "type":"bread"
+  },
+  {
+    "number": "b14",
+    "name":"ブリオッシュ",
+    "type":"bread"
+  },
+  {
+    "number": "b15",
+    "name":"マフィン",
+    "type":"bread"
+  },
+  {
+    "number": "b16",
+    "name":"カレーパン",
+    "type":"bread"
+  },
+  {
+    "number": "b17",
+    "name":"サンドイッチ",
+    "type":"bread"
+  },
+  {
+    "number": "b18",
+    "name":"チョココロネ",
+    "type":"bread"
+  },
+  {
+    "number": "b19",
+    "name":"ベーグル",
+    "type":"bread"
+  },
+  {
+    "number": "b20",
+    "name":"アンパン",
+    "type":"bread"
   }
 ]
