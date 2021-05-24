@@ -38,9 +38,9 @@
   `FV` または `FrostVail`
 - Lost Dream  
   `LD` または `LostDream`
-- Bread Rondo
+- Bread Rondo  
   `Bread` または `BreadRondo`
-- ブレイドシュトローム(無印、Night Theater混成ルール)
+- ブレイドシュトローム(無印、Night Theater混成ルール)  
   `BS` または `BladeStrom`
 
   
@@ -54,6 +54,8 @@
 @Blade_Rondo_Dealer bake
 ```
 対戦ルールでBread Rondoを指定した場合、上記コマンドでランダムなパンを取得することができます。
-
-対戦ルールでBread Rondoを指定し直すたびにパンの山札はリセットされます。
+```
+:bread:ブリオッシュが焼けた！
+```
+パンの山札は対戦ルールでBread Rondoを指定し直すたびにリセットされます。
 パンの山札の内容はチャンネルごとに保持されます。
