@@ -13,16 +13,16 @@ require('dotenv').config();
 const discord = require('discord.js');
 const client = new discord.Client();
 
+
+// カードリスト読み込み
 const cardlist = require("./cardlist.json");
 
-const cardsets = {
-  bladeRondo:[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14,15,15,16,16,17,17,18,18,19,19,20,20],
-  nightTheater:[21,21,22,22,23,23,24,24,25,25,26,26,27,27,28,28,29,29,30,30,31,31,32,32,33,33,34,34,35,35,36,36,37,37,38,38,39,39,40,40],
-  grimGarden:[41,41,42,42,43,43,44,44,45,45,46,46,47,47,48,48,49,49,50,50,51,51,52,52,53,53,54,54,55,55,56,56,57,57,58,58,59,59,60,60],
-  frostVeil:[61,61,62,62,63,63,64,64,65,65,66,66,67,67,68,68,69,69,70,70,71,71,72,72,73,73,74,74,75,75,76,76,77,77,78,78,79,79,80,80],
-  lostDream:[81,81,82,82,83,83,84,84,85,85,86,86,87,87,88,88,89,89,90,90,91,91,92,92,93,93,94,94,95,95,96,96,97,97,98,98,99,99,100,100],
-  bladestrom:[1,1,2,2,3,3,4,4,5,5,6,6,21,21,22,22,23,23,24,24,25,25,12,12,14,14,31,31,33,33,34,34,18,18,19,19,39,39,40,40]
-};
+// カードセット定義
+const cardsets = require("./cardsets.json");
+
+// パンオブジェクト初期化
+var breads = {};
+
 
 // bot起動時の動作
 client.on('ready', message =>
@@ -49,10 +49,18 @@ client.on('message', async message =>
   }
   console.log('reply received!');
   
-  if(args.length === 4){
-    sendHand(message.channel, args)
-  }else{
-    sendHelp(message.channel);       
+  
+  switch(args.length){
+    case 2:
+      // パン焼き
+      if(args[1] === "bake"){bakeBread(message.channel);}
+      break;
+    case 4:
+      sendHand(message.channel, args);
+      break;
+      
+    default:
+      sendHelp(message.channel);   
   }
   
 });
@@ -76,6 +84,11 @@ __**Blade Rondo Dealerの使い方**__
 > \`@Blade_Rondo_dealer# BladeRondo @Maria @Sonya\`
 のように入力してください。
 
+:bread: パンを焼く
+\`@Blade_Rondo_dealer bake\`
+Bread Rondoで遊んでいる場合、上記コマンドでパンを焼くことができます。
+パンの山札は対戦ルールでBread Rondoを指定し直すたびにリセットされます。
+
 :question: このヘルプを表示
 \`@Blade_Rondo_dealer\`
 
@@ -86,6 +99,7 @@ __**ルールの指定方法**__
 > ・Grim Garden -> \` GG \` または \` GrimGarden \`
 > ・Frost Veil -> \` FV \` または \` FrostVeil \`
 > ・Lost Dream -> \` LD \` または \` LostDream \`
+> ・Bread Rondo -> \` Bread \` または \` BreadRondo \`
 > ・ブレイドシュトローム(BR,NT混成プレイ) -> \` BS \` または \` BladeStrom \`
 `;
   channel.send(message)
@@ -133,13 +147,25 @@ function sendHand(channel, args){
       cardset = cardsets['bladestrom'];
       cardsetName = "ブレイドシュトローム";
       break;
+    case 'bread':
+    case 'breadrondo':
+      cardset = cardsets['breadrondo'];
+      cardsetName = "Bread Rondo";
+      
+      // bakeBread()で使用するパンをチャンネル別に初期化
+      breads[channel.id] = cardsets["breads"].slice();    
+      break;
     default:
       sendHelp(channel);
       return;
   }
   
   // カードリストからデッキ取得
-  cardset.forEach(number => deck.push(cardlist[number]));
+  cardset.forEach(name => {
+    let index = cardlist.findIndex(data => data.name === name);
+    deck.push(cardlist[index]);
+  });
+  
   
   // シャッフル
   for(let i = deck.length - 1; i > 0; i--){
@@ -151,15 +177,27 @@ function sendHand(channel, args){
   
   // 2プレイヤー分繰り返す
   for (let i = 0; i < 2; i++){
-    // 15枚ずつ配布  
+    // 手札の配布
     let hand = [];
-    hand = deck.splice(0,15).sort((a,b)=>{return a.number < b.number ? -1 : 1});
+    
+    if(cardsetName === "Bread Rondo"){
+      // bread rondoは10枚のみ
+      hand = deck.splice(0,10).sort((a,b)=>{return a.number < b.number ? -1 : 1});
+    }else{
+      hand = deck.splice(0,15).sort((a,b)=>{return a.number < b.number ? -1 : 1});
+    }
     
     // 送信するテキストを生成
     let message = "対戦ルール：" + cardsetName + "\n";
     hand.forEach(e =>{
       // アイコン, カード番号, カード名, 改行コード
-      message += typeIcon(e.type) + 'No.' + ("000" + e.number).slice(-3) + "  " + e.name + "\n"
+      if(cardsetName === "Bread Rondo"){
+        // bread rondoはカード番号なし
+        message += typeIcon(e.type) + "  " + e.name + "\n"
+      }else{
+        message += typeIcon(e.type) + 'No.' + ("000" + e.number).slice(-3) + "  " + e.name + "\n"
+      }
+      
     });
     
     // メッセージ送信
@@ -188,4 +226,21 @@ function typeIcon(type){
     default:
       return "";
   }
+}
+
+// パンを焼く
+function bakeBread(channel){
+  // そのチャンネルでパンが用意されているかチェック
+  if(typeof breads[channel.id] === "undefined" || breads[channel.id].length == 0){
+    channel.send("パンの山札が空か、Bread Rondoでまだ遊んでいません！")
+    .catch(console.error);
+    return;
+  }
+  
+  // パンの名称取得
+  let rndNo = Math.floor(Math.random() * breads[channel.id].length);
+  let breadName = breads[channel.id].splice(rndNo, 1)[0];
+
+  // 送信
+  channel.send(":bread:" + breadName + "が焼けた！").catch(console.error);
 }
