@@ -11,6 +11,8 @@
   "devDependencies": {},
   "scripts": {
     "start": "node main.js",
-    "test": "node main.js"
+    "test": "node main.js",
+    "daemon-start": "forever start main.js",
+    "daemon-stop": "forever stop main.js"
   }
 }

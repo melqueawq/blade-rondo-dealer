@@ -10,8 +10,16 @@ http.createServer(function(request, response)
 require('dotenv').config();
 
 const log4js = require('log4js')
+log4js.configure({
+  appenders:{
+    stdout: { type: 'stdout' },
+    file:   { type: 'file', filename: 'app.log'}
+  },
+  categories:{
+    default:{appenders:['stdout', 'file'], level: 'debug'}
+  }
+})
 const logger = log4js.getLogger();
-logger.level = 'debug'
 
 // Discord bot implements
 const discord = require('discord.js');
@@ -52,7 +60,7 @@ client.on('message', async message =>
     return;
   }
   logger.info('reply received!');
-  logger.debug('channel id: ' + message.channel.id);
+  logger.debug('channel id: ' + message.channel.id + ', message: ' + message.content);
 
   switch(args.length){
     case 2:
