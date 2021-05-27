@@ -1,6 +1,13 @@
 # Blade Rondo Dealer
 『Blade Rondo』シリーズのリモート対戦用DiscordBot
 
+## 招待する
+https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permissions=3072&scope=bot
+
+上記リンクをクリックしてサーバーに招待して使用してください。
+
+`@Blade_Rondo_Dealer`で呼びかけてヘルプメッセージを返したらbotが稼働していて利用可能な状態です。
+
 ## これは何？
 [Domina Games](https://www.dominagames.com/)様から大好評販売中の2人対戦ボードゲームシリーズである
 『Blade Rondo』シリーズの対戦をDiscordを通じて行うためのbotです。
@@ -10,6 +17,7 @@
 
 
 ## つかいかた
+1. botをサーバーに招待する
 1. 対戦を行うユーザー2人が同一の『Blade Rondo』シリーズ製品を用意する
 1. botをサーバーに招待する
 1. コマンドをテキストチャンネルに書き込む
