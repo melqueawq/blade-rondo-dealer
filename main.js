@@ -9,6 +9,10 @@ http.createServer(function(request, response)
 // dotenv
 require('dotenv').config();
 
+const log4js = require('log4js')
+const logger = log4js.getLogger();
+logger.level = 'debug'
+
 // Discord bot implements
 const discord = require('discord.js');
 const client = new discord.Client();
@@ -29,7 +33,7 @@ client.on('ready', message =>
 {
   client.user.setPresence({ activity: { name: 'Blade Rondo' }, status: 'online' })
   .catch(console.error);
-	console.log('bot is ready!');
+	logger.info('bot is ready!');
 });
 
 // メッセージ受信
@@ -47,9 +51,9 @@ client.on('message', async message =>
   if(!args[0].includes(client.user.id.toString())){
     return;
   }
-  console.log('reply received!');
-  
-  
+  logger.info('reply received!');
+  logger.debug('channel id: ' + message.channel.id);
+
   switch(args.length){
     case 2:
       // パン焼き
@@ -68,7 +72,7 @@ client.on('message', async message =>
 
 if(process.env.DISCORD_BOT_TOKEN == undefined)
 {
-	console.log('please set ENV: DISCORD_BOT_TOKEN');
+	logger.fatal('please set ENV: DISCORD_BOT_TOKEN');
 	process.exit(0);
 }
 
@@ -103,7 +107,7 @@ __**ルールの指定方法**__
 > ・ブレイドシュトローム(BR,NT混成プレイ) -> \` BS \` または \` BladeStrom \`
 `;
   channel.send(message)
-  .catch(console.error);
+  .catch(logger.error);
 }
 
 // 初期配布カードを送信する
@@ -204,9 +208,9 @@ function sendHand(channel, args){
     client.users.fetch(player[i])
         .then(user => {
           user.send(message)
-              .catch(console.error);
+              .catch(logger.error);
         })
-        .catch(console.error);
+        .catch(logger.error);
   }
 }
 
@@ -233,7 +237,7 @@ function bakeBread(channel){
   // そのチャンネルでパンが用意されているかチェック
   if(typeof breads[channel.id] === "undefined" || breads[channel.id].length == 0){
     channel.send("パンの山札が空か、Bread Rondoでまだ遊んでいません！")
-    .catch(console.error);
+    .catch(logger.error);
     return;
   }
   
@@ -242,5 +246,5 @@ function bakeBread(channel){
   let breadName = breads[channel.id].splice(rndNo, 1)[0];
 
   // 送信
-  channel.send(":bread:" + breadName + "が焼けた！").catch(console.error);
+  channel.send(":bread:" + breadName + "が焼けた！").catch(logger.error);
 }
