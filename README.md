@@ -43,7 +43,7 @@ https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permission
 - Grim Garden  
   `GG` または `GrimGarden`
 - Frost Veil  
-  `FV` または `FrostVail`
+  `FV` または `FrostVeil`
 - Lost Dream  
   `LD` または `LostDream`
 - Bread Rondo  
