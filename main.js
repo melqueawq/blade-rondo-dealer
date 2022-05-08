@@ -1,14 +1,7 @@
-// Response for Uptime Robot
-const http = require('http');
-http.createServer(function(request, response)
-{
-	response.writeHead(200, {'Content-Type': 'text/plain'});
-	response.end('Discord bot is active now \n');
-}).listen(3000);
-
 // dotenv
 require('dotenv').config();
 
+// log4js
 const log4js = require('log4js')
 log4js.configure({
   appenders:{
@@ -21,30 +14,56 @@ log4js.configure({
 })
 const logger = log4js.getLogger();
 
-// Discord bot implements
-const discord = require('discord.js');
-const client = new discord.Client();
+// fs
+const fs = require('fs');
 
+// 必要クラス読み込み
+const { Client, Collection, Intents, MessageActionRow, MessageSelectMenu } = require('discord.js');
 
-// カードリスト読み込み
+// インスタンス作成
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
+// コマンド読み込み
+client.commands = new Collection(); //新しいインスタンスを作成します
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+// ./commands/ 内のデータをclient.commandsに登録
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`); 
+  // コレクションに新しいアイテムを設定
+  client.commands.set(command.data.name, command);
+}
+
+// カードリスト、カードセット読み込み
 const cardlist = require("./cardlist.json");
-
-// カードセット定義
 const cardsets = require("./cardsets.json");
 
 // パンオブジェクト初期化
 var breads = {};
 
-
 // bot起動時の動作
-client.on('ready', message =>
-{
-  client.user.setPresence({ activity: { name: 'Blade Rondo' }, status: 'online' })
-  .catch(console.error);
+client.once('ready', () => {
 	logger.info('bot is ready!');
+  client.user.setActivity('Blade Rondo');
+});
+
+// コマンドに対する応答
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	const command = client.commands.get(interaction.commandName);
+  if (!command) return;
+  try {
+    await command.execute(interaction);
+  } catch (error) {
+    console.error(error);
+    await interaction.reply({ content: 'errored', ephemeral: true});
+  }
 });
 
 // メッセージ受信
+/*
 client.on('message', async message =>
 {
   // 非botなら返信する
@@ -77,14 +96,15 @@ client.on('message', async message =>
   
 });
 
+*/
 
+// .envにトークンが未定義なら終了
 if(process.env.DISCORD_BOT_TOKEN == undefined)
 {
 	logger.fatal('please set ENV: DISCORD_BOT_TOKEN');
 	process.exit(0);
 }
-
-client.login( process.env.DISCORD_BOT_TOKEN );
+client.login(process.env.DISCORD_BOT_TOKEN);
 
 // ヘルプ
 function sendHelp(channel){
