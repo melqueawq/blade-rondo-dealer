@@ -106,37 +106,6 @@ if(process.env.DISCORD_BOT_TOKEN == undefined)
 }
 client.login(process.env.DISCORD_BOT_TOKEN);
 
-// ヘルプ
-function sendHelp(channel){
-  let message = `
-__**Blade Rondo Dealerの使い方**__
-:crossed_swords: 対戦を行う場合
-\`@Blade_Rondo_dealer [ルール] [対戦者1] [対戦者2]\`
-例えば、MariaとSonyaでBlade Rondo(無印)の対戦を行う場合は
-> \`@Blade_Rondo_dealer# BladeRondo @Maria @Sonya\`
-のように入力してください。
-
-:bread: パンを焼く
-\`@Blade_Rondo_dealer bake\`
-Bread Rondoで遊んでいる場合、上記コマンドでパンを焼くことができます。
-パンの山札は対戦ルールでBread Rondoを指定し直すたびにリセットされます。
-
-:question: このヘルプを表示
-\`@Blade_Rondo_dealer\`
-
-__**ルールの指定方法**__
-適用したいルールに応じて[ルール]の部分を置き換えてください。(大文字小文字は問いません)
-> ・Blade Rondo(無印) -> \` BR \` または \` BladeRondo \`
-> ・Night Theater -> \` NT \` または \` NightTheater \`
-> ・Grim Garden -> \` GG \` または \` GrimGarden \`
-> ・Frost Veil -> \` FV \` または \` FrostVeil \`
-> ・Lost Dream -> \` LD \` または \` LostDream \`
-> ・Bread Rondo -> \` Bread \` または \` BreadRondo \`
-> ・ブレイドシュトローム(BR,NT混成プレイ) -> \` BS \` または \` BladeStrom \`
-`;
-  channel.send(message)
-  .catch(logger.error);
-}
 
 // 初期配布カードを送信する
 function sendHand(channel, args){
