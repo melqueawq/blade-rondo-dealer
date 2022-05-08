@@ -35,13 +35,6 @@ for (const file of commandFiles) {
   client.commands.set(command.data.name, command);
 }
 
-// カードリスト、カードセット読み込み
-const cardlist = require("./cardlist.json");
-const cardsets = require("./cardsets.json");
-
-// パンオブジェクト初期化
-var breads = {};
-
 // bot起動時の動作
 client.once('ready', () => {
 	logger.info('bot is ready!');
@@ -62,42 +55,6 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-// メッセージ受信
-/*
-client.on('message', async message =>
-{
-  // 非botなら返信する
-  if (message.author.id === client.user.id) {
-    return;
-  }
-  
-  // 引数を分割
-  const args = message.content.split(/\s/);
-  
-  // 第一引数に自身のIDがなければリプライではないとみなして処理
-  if(!args[0].includes(client.user.id.toString())){
-    return;
-  }
-  logger.info('reply received!');
-  logger.debug('channel id: ' + message.channel.id + ', message: ' + message.content);
-
-  switch(args.length){
-    case 2:
-      // パン焼き
-      if(args[1] === "bake"){bakeBread(message.channel);}
-      break;
-    case 4:
-      sendHand(message.channel, args);
-      break;
-      
-    default:
-      sendHelp(message.channel);   
-  }
-  
-});
-
-*/
-
 // .envにトークンが未定義なら終了
 if(process.env.DISCORD_BOT_TOKEN == undefined)
 {
@@ -108,7 +65,7 @@ client.login(process.env.DISCORD_BOT_TOKEN);
 
 
 // 初期配布カードを送信する
-function sendHand(channel, args){
+/*function sendHand(channel, args){
   let rule = args[1];
   let player = [args[2].match(/\d+/)[0], args[3].match(/\d+/)[0]];
   
@@ -245,3 +202,4 @@ function bakeBread(channel){
   // 送信
   channel.send(":bread:" + breadName + "が焼けた！").catch(logger.error);
 }
+*/
