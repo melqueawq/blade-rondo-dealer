@@ -15,11 +15,11 @@ __**Blade Rondo Dealerの使い方**__
 :crossed_swords: 対戦を行う場合
 \`/newgame [対戦したいフォーマット]\`
 例えば、MariaとSonyaでBlade Rondo(無印)の対戦を行う場合は
-> \`/newgame BladeRondo\`
+> \`/newgame BladeRondo @Maria @Sonya\`
 のように入力してください。
 
 :bread: パンを焼く
-\`@Blade_Rondo_dealer bake\`
+\`/bake\`
 Bread Rondoで遊んでいる場合、上記コマンドでパンを焼くことができます。
 パンの山札は対戦ルールでBread Rondoを指定し直すたびにリセットされます。
 
@@ -27,14 +27,15 @@ Bread Rondoで遊んでいる場合、上記コマンドでパンを焼くこと
 \`/help\`
 
 __**ルールの指定方法**__
-適用したいルールに応じて[ルール]の部分を置き換えてください。(大文字小文字は問いません)
-> ・Blade Rondo(無印) -> \` BR \` または \` BladeRondo \`
-> ・Night Theater -> \` NT \` または \` NightTheater \`
-> ・Grim Garden -> \` GG \` または \` GrimGarden \`
-> ・Frost Veil -> \` FV \` または \` FrostVeil \`
-> ・Lost Dream -> \` LD \` または \` LostDream \`
-> ・Bread Rondo -> \` Bread \` または \` BreadRondo \`
-> ・ブレイドシュトローム(BR,NT混成プレイ) -> \` BS \` または \` BladeStrom \`
+botの提示する候補を選択してください。
+対応フォーマット一覧:
+> ・Blade Rondo
+> ・Night Theater
+> ・Grim Garden
+> ・Frost Veil
+> ・Lost Dream
+> ・Bread Rondo
+> ・ブレイドシュトローム(BR, NT混成プレイ)
 `;
         await interaction.reply(message); //返答
     },
