@@ -1,18 +1,25 @@
 {
-  "name": "glitch-discord-bot",
+  "name": "blade-rondo-dealer",
   "version": "0.0.0",
-  "description": "discord bot sample on Glitch",
+  "description": "A bot that deals the initial hand of Blade Rondo",
   "main": "main.js",
+  "license": "MIT",
   "dependencies": {
+    "@discordjs/builders": "^0.13.0",
+    "@discordjs/rest": "^0.4.1",
+    "discord-api-types": "^0.32.1",
     "discord.js": "latest",
     "dotenv": "^10.0.0",
-    "log4js": "^6.3.0"
+    "forever": "^4.0.3",
+    "log4js": "^6.3.0",
+    "nodemon": "^2.0.16"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node main.js",
+    "start": "nodemon main.js",
     "test": "node main.js",
     "daemon-start": "forever start main.js",
-    "daemon-stop": "forever stop main.js"
+    "daemon-stop": "forever stop main.js",
+    "deploy-commands": "node deploy-commands.js"
   }
 }
