@@ -40,7 +40,12 @@ module.exports = {
 
       sendHands(interaction);
 
-      await interaction.reply('カードを配布しました!'); //返答
+      const firstPlayer = Math.floor(Math.random() * 2) + 1;
+
+      await interaction.reply(`
+初期手札を配布しました。
+${interaction.options.getUser(`プレイヤー${firstPlayer}`)}さんが先攻後攻を決定してください。
+      `); //返答
     },
 };
 
