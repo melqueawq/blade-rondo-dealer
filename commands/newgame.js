@@ -42,10 +42,17 @@ module.exports = {
 
       const firstPlayer = Math.floor(Math.random() * 2) + 1;
 
-      await interaction.reply(`
+      let message = 
+`
 初期手札を配布しました。
 ${interaction.options.getUser(`プレイヤー${firstPlayer}`)}さんが先攻後攻を決定してください。
-      `); //返答
+`
+
+      if (interaction.options.getString('フォーマット') === 'breadRondo') {
+        message += 'パン情報を初期化しました。パンを焼くには`/bake`を実行してください。';
+      }
+
+      await interaction.reply(message); //返答
     },
 };
 
@@ -65,7 +72,7 @@ function sendHands(interaction) {
   });
 
   // 山札のシャッフル
-  for(let i = deck.length - 1; i > 0; i--){
+  for (let i = deck.length - 1; i > 0; i--){
     let r = Math.floor(Math.random() * (i + 1));
     let tmp = deck[i];
     deck[i] = deck[r];
@@ -79,14 +86,18 @@ function sendHands(interaction) {
     
     if(cardSet.name === "Bread Rondo"){
       // bread rondoは10枚のみ
-      hand = deck.splice(0,10).sort((a,b)=>{return a.number < b.number ? -1 : 1});
+      hand = deck.splice(0, 10).sort((a, b) => { return a.number < b.number ? -1 : 1 });
+      
+      // パン情報初期化もする
+      global.breads[interaction.channelId] = ["パンゴーレム", "ブリオッシュ", "マフィン", "カレーパン", "サンドイッチ", "チョココロネ", "ベーグル", "アンパン"];
+
     }else{
       hand = deck.splice(0,15).sort((a,b)=>{return a.number < b.number ? -1 : 1});
     }
     
     // 送信するテキストを生成
     let message = "対戦ルール：" + cardSet.name + "\n";
-    hand.forEach(e =>{
+    hand.forEach(e => {
       // アイコン, カード番号, カード名, 改行コード
       if(cardSet.name === "Bread Rondo"){
         // bread rondoはカード番号なし

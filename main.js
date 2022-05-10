@@ -39,6 +39,9 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	logger.info('bot is ready!');
   client.user.setActivity('Blade Rondo');
+
+  // パン情報初期化
+  global.breads = {};
 });
 
 // コマンドに対する応答
@@ -62,22 +65,3 @@ if(process.env.DISCORD_BOT_TOKEN == undefined)
 	process.exit(0);
 }
 client.login(process.env.DISCORD_BOT_TOKEN);
-
-/*
-// パンを焼く
-function bakeBread(channel){
-  // そのチャンネルでパンが用意されているかチェック
-  if(typeof breads[channel.id] === "undefined" || breads[channel.id].length == 0){
-    channel.send("パンの山札が空か、Bread Rondoでまだ遊んでいません！")
-    .catch(logger.error);
-    return;
-  }
-  
-  // パンの名称取得
-  let rndNo = Math.floor(Math.random() * breads[channel.id].length);
-  let breadName = breads[channel.id].splice(rndNo, 1)[0];
-
-  // 送信
-  channel.send(":bread:" + breadName + "が焼けた！").catch(logger.error);
-}
-*/
