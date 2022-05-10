@@ -14,34 +14,13 @@ module.exports = {
           .setDescription('利用するフォーマットを指定してください。')
           .setRequired(true)
           .addChoices(
-            {
-              name: 'Blade Rondo', 
-              value: 'bladeRondo'
-            },
-            {
-              name: 'Night Theater', 
-              value: 'nightTheater'
-            },
-            {
-              name: 'Grim Garden', 
-              value: 'grimGarden'
-            },
-            {
-              name: 'Frost Veil', 
-              value: 'frostVeil'
-            },
-            {
-              name: 'Lost Dream', 
-              value: 'lostDream'
-            },
-            {
-              name: 'Bread Rondo', 
-              value: 'breadRondo'
-            },
-            {
-              name: 'ブレイドシュトローム', 
-              value: 'bladeStrom'
-            },
+            { name: 'Blade Rondo', value: 'bladeRondo' },
+            { name: 'Night Theater', value: 'nightTheater' },
+            { name: 'Grim Garden', value: 'grimGarden' },
+            { name: 'Frost Veil', value: 'frostVeil' },
+            { name: 'Lost Dream', value: 'lostDream' },
+            { name: 'Bread Rondo', value: 'breadRondo' },
+            { name: 'ブレイドシュトローム', value: 'bladeStrom' },
           )
       )
       .addUserOption(option =>
@@ -61,7 +40,7 @@ module.exports = {
 
       sendHands(interaction);
 
-      await interaction.reply('Pong!'); //返答
+      await interaction.reply('カードを配布しました!'); //返答
     },
 };
 
