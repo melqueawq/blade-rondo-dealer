@@ -2,11 +2,11 @@
 『Blade Rondo』シリーズのリモート対戦用DiscordBot
 
 ## 招待する
-https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permissions=3072&scope=bot
+https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permissions=3072&scope=bot%20applications.commands
 
 上記リンクをクリックしてサーバーに招待して使用してください。
 
-`@Blade_Rondo_Dealer`で呼びかけてヘルプメッセージを返したらbotが稼働していて利用可能な状態です。
+`/help`コマンドを実行してヘルプメッセージを返したらbotが稼働していて利用可能な状態です。
 
 ## これは何？
 [Domina Games](https://www.dominagames.com/)様から大好評販売中の2人対戦ボードゲームシリーズである
@@ -25,45 +25,46 @@ https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permission
 
 ## 対戦の始め方
 ```
-@Blade_Rondo_Dealer [ルール] [ユーザー1] [ユーザー2]
+/newgame [ルール] [ユーザー1] [ユーザー2]
 ```
 
 入力例：マリアとソーニャでBlade Rondo(無印)の対戦を行う場合  
 ```
-@Blade_Rondo_Dealer BladeRondo @Maria @Sonya
+/newgame [Blade Rondo] [@Maria] [@Sonya]
 ```  
 
+スラッシュコマンド入力時にルールやユーザー名は候補表示が行われるため、それを利用して選択してください。
 
-### ルール名
-対戦を行うルール名を指定できます。
+### ルール
+対戦を行うルールを指定できます。
+
+対応フォーマット: 
 - Blade Rondo(無印)  
-  `BR` または `BladeRondo`
 - Night Theater  
-  `NT` または `NightTheater`
 - Grim Garden  
-  `GG` または `GrimGarden`
 - Frost Veil  
-  `FV` または `FrostVeil`
 - Lost Dream  
-  `LD` または `LostDream`
 - Bread Rondo  
-  `Bread` または `BreadRondo`
 - ブレイドシュトローム(無印、Night Theater混成ルール)  
-  `BS` または `BladeStrom`
 
-  
-大文字小文字は問いませんが、単語間に空白を入れないようご注意ください。
+入力候補による補完を利用して入力してください。
     
 ### ユーザー名1、ユーザー名2
 対戦を行うユーザーを上記の入力例のように指定してください。
+入力候補による補完を利用して入力することをおすすめします。
 
 ## パンを焼く
 ```
-@Blade_Rondo_Dealer bake
+/bake
 ```
 対戦ルールでBread Rondoを指定した場合、上記コマンドでランダムなパンを取得することができます。
 ```
 :bread:ブリオッシュが焼けた！
 ```
 パンの山札は対戦ルールでBread Rondoを指定し直すたびにリセットされます。
-パンの山札の内容はチャンネルごとに保持されます。
+また、`/bake init`を実行することでも山札を初期化できます。
+
+パンの山札の内容はチャンネルごとに保持されます。同じチャンネル内で複数のゲームで同時にパンを焼くことはできません。
+
+## 問い合わせ
+ルール追加や導入、機能などに関する相談は[@tolt_santyoku](https://twitter.com/tolt_santyoku)にお問い合わせください。
