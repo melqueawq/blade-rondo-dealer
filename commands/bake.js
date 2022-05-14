@@ -34,6 +34,7 @@ module.exports = {
       const rndNo = Math.floor(Math.random() * global.breads[channelId].length);
       let breadName = global.breads[channelId].splice(rndNo, 1)[0];
 
+      global.logger.info(`${channelId} : ${breadName}が焼けた！`);
       await interaction.reply(`:bread:${breadName}が焼けた！`); //返答
     },
 };
