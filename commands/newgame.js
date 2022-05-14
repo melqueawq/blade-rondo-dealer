@@ -52,6 +52,7 @@ ${interaction.options.getUser(`プレイヤー${firstPlayer}`)}さんが先攻�
         message += 'パン情報を初期化しました。パンを焼くには`/bake`を実行してください。';
       }
 
+      global.logger.info(`${interaction.channelId} : ${interaction.options.getString('フォーマット')}, ${interaction.options.getUser('プレイヤー1')}, ${interaction.options.getUser('プレイヤー2')}`);
       await interaction.reply(message); //返答
     },
 };
@@ -61,9 +62,7 @@ function sendHands(interaction) {
   const players = [interaction.options.getUser('プレイヤー1'), interaction.options.getUser('プレイヤー2')];
   let deck = [];
 
-  console.log(players);
   const cardSet = cardSets[format];
-  console.log(cardSet);
 
   // カードリストから山札情報を取得
   cardSet.cards.forEach(name => {

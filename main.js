@@ -12,7 +12,7 @@ log4js.configure({
     default:{appenders:['stdout', 'file'], level: 'debug'}
   }
 })
-const logger = log4js.getLogger();
+global.logger = log4js.getLogger();
 
 // fs
 const fs = require('fs');
@@ -37,7 +37,7 @@ for (const file of commandFiles) {
 
 // bot起動時の動作
 client.once('ready', () => {
-	logger.info('bot is ready!');
+	global.logger.info('bot is ready!');
   client.user.setActivity('Blade Rondo');
 
   // パン情報初期化
@@ -61,7 +61,7 @@ client.on('interactionCreate', async interaction => {
 // .envにトークンが未定義なら終了
 if(process.env.DISCORD_BOT_TOKEN == undefined)
 {
-	logger.fatal('please set ENV: DISCORD_BOT_TOKEN');
+	global.logger.fatal('please set ENV: DISCORD_BOT_TOKEN');
 	process.exit(0);
 }
 client.login(process.env.DISCORD_BOT_TOKEN);
