@@ -37,30 +37,45 @@ module.exports = {
   
     // コマンド実行時処理
     async execute(interaction) {
+      // コマンド詳細表示
+      global.logger.info(`${interaction.channelId} : /newgame [${interaction.options.getString('フォーマット')}] [${interaction.options.getUser('プレイヤー1').tag}] [${interaction.options.getUser('プレイヤー2').tag}]`);
 
-      sendHands(interaction);
+      // 初手送信
+      const hands = createHands(interaction);
+      try {
+        await Promise.all(hands.map(async hand => await hand.player.send(hand.message)))
+          .catch(async e => {
+            await interaction.reply(`
+エラー: 指定されたプレイヤーへのDM送信が行えませんでした。
+DMが拒否設定になっているか、無効なユーザーが指定されています。
+            `);
+            throw e;
+          });
+      } catch (error) {
+        global.logger.error(error);
+        return;
+      }
 
+      // 先攻プレイヤー決定
       const firstPlayer = Math.floor(Math.random() * 2) + 1;
-
-      let message = 
-`
+      let message = `
 初期手札を配布しました。
 ${interaction.options.getUser(`プレイヤー${firstPlayer}`)}さんが先攻後攻を決定してください。
-`
+      `;
 
       if (interaction.options.getString('フォーマット') === 'breadRondo') {
         message += 'パン情報を初期化しました。パンを焼くには`/bake`を実行してください。';
       }
 
-      global.logger.info(`${interaction.channelId} : ${interaction.options.getString('フォーマット')}, ${interaction.options.getUser('プレイヤー1')}, ${interaction.options.getUser('プレイヤー2')}`);
       await interaction.reply(message); //返答
     },
 };
 
-function sendHands(interaction) {
+function createHands(interaction) {
   const format = interaction.options.getString('フォーマット');
   const players = [interaction.options.getUser('プレイヤー1'), interaction.options.getUser('プレイヤー2')];
   let deck = [];
+  let return_array = [];
 
   const cardSet = cardSets[format];
 
@@ -107,9 +122,11 @@ function sendHands(interaction) {
       
     });
     
-    // テキスト送信
-    players[i].send(message);
+
+    return_array.push({ 'player': players[i], 'message': message });
   }
+
+  return return_array;
 }
 
 // アイコン取得
