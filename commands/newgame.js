@@ -9,30 +9,66 @@ module.exports = {
     new SlashCommandBuilder()
       .setName('newgame') 
       .setDescription('Blade Rondoの新しいゲームを作成します。')
-      .addStringOption(option =>
-        option.setName('フォーマット')
-          .setDescription('利用するフォーマットを指定してください。')
-          .setRequired(true)
-          .addChoices(
-            { name: 'Blade Rondo', value: 'bladeRondo' },
-            { name: 'Night Theater', value: 'nightTheater' },
-            { name: 'Grim Garden', value: 'grimGarden' },
-            { name: 'Frost Veil', value: 'frostVeil' },
-            { name: 'Lost Dream', value: 'lostDream' },
-            { name: 'Bread Rondo', value: 'breadRondo' },
-            { name: 'ブレイドシュトローム', value: 'bladeStrom' },
+      .addSubcommand(subcommand =>
+        subcommand
+          .setName('normal')
+          .setDescription('Blade Rondo通常プレイの新しいゲームを作成します。')
+          .addStringOption(option =>
+            option.setName('フォーマット')
+              .setDescription('利用するフォーマットを指定してください。')
+              .setRequired(true)
+              .addChoices(
+                { name: 'Blade Rondo', value: 'bladeRondo' },
+                { name: 'Night Theater', value: 'nightTheater' },
+                { name: 'Grim Garden', value: 'grimGarden' },
+                { name: 'Frost Veil', value: 'frostVeil' },
+                { name: 'Lost Dream', value: 'lostDream' },
+                { name: 'Bread Rondo', value: 'breadRondo' },
+              )
           )
-      )
-      .addUserOption(option =>
-        option.setName('プレイヤー1')
-          .setDescription('対戦する1人目のユーザーを指定。')
-          .setRequired(true)
-      )
-      .addUserOption(option =>
-        option.setName('プレイヤー2')
-          .setDescription('対戦する2人目のユーザーを指定。')
-          .setRequired(true)
-      ),
+          .addUserOption(option =>
+            option.setName('プレイヤー1')
+              .setDescription('対戦する1人目のユーザーを指定。')
+              .setRequired(true)
+          )
+          .addUserOption(option =>
+            option.setName('プレイヤー2')
+              .setDescription('対戦する2人目のユーザーを指定。')
+              .setRequired(true)
+          ))
+      
+      .addSubcommand(subcommand =>
+        subcommand
+          .setName('hybrid')
+          .setDescription('Blade Rondo混成プレイの新しいゲームを作成します。')
+          .addStringOption(option =>
+            option.setName('フォーマット')
+              .setDescription('利用するフォーマットを指定してください。')
+              .setRequired(true)
+              .addChoices(
+                { name: 'ブレイドシュトローム', value: 'bladeStrom' },
+                { name: 'BR/NT混成', value: 'br_nt' },
+                { name: 'BR/GG混成', value: 'br_gg' },
+                { name: 'BR/FV混成', value: 'br_fv' },
+                { name: 'BR/LD混成', value: 'br_ld' },
+                { name: 'NT/GG混成', value: 'nt_gg' },
+                { name: 'NT/FV混成', value: 'nt_fv' },
+                { name: 'NT/LD混成', value: 'nt_ld' },
+                { name: 'GG/FV混成', value: 'gg_fv' },
+                { name: 'GG/LD混成', value: 'gg_ld' },
+                { name: 'FV/LD混成', value: 'fv_ld' },
+              )
+          )
+          .addUserOption(option =>
+            option.setName('プレイヤー1')
+              .setDescription('対戦する1人目のユーザーを指定。')
+              .setRequired(true)
+          )
+          .addUserOption(option =>
+            option.setName('プレイヤー2')
+              .setDescription('対戦する2人目のユーザーを指定。')
+              .setRequired(true)
+          )),
   
   
     // コマンド実行時処理
@@ -47,7 +83,7 @@ module.exports = {
           .catch(async e => {
             await interaction.reply(`
 エラー: 指定されたプレイヤーへのDM送信が行えませんでした。
-DMが拒否設定になっているか、無効なユーザーが指定されています。
+DMが拒否設定になっているか、無効なユーザーが指定されている可能性があります。
             `);
             throw e;
           });
