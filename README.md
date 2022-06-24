@@ -41,7 +41,7 @@ https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permission
 ```  
 入力例2：マリアとソーニャでNight TheaterとFrost Veilの混成デッキによる対戦を行う場合  
 ```
-/newgame normal [NT/FV混成] [@Maria] [@Sonya]
+/newgame hybrid [NT/FV混成] [@Maria] [@Sonya]
 ```  
 スラッシュコマンド入力時にフォーマットやユーザー名は候補表示が行われるため、それを利用して選択してください。
 
@@ -57,7 +57,7 @@ https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permission
   - Lost Dream  
   - Bread Rondo  
 - 混成プレイ(詳細は[こちら](#混成プレイのカードプールについて))
-  - ブレイドシュトローム(無印、Night Theater混成フォーマット)  
+  - ブレイドシュトローム(公式の無印、Night Theater混成フォーマット)  
   - 2作品全カード混成プレイ
 
 フォーマット入力の際は入力候補による補完を利用して入力してください。
@@ -112,5 +112,11 @@ Discordチャンネル内にヘルプを表示できます。
   - LD: Lost Dream
 - 例として、`BR/NT混成`を選択した場合、Blade Rondo(無印)とNight Theaterの全カードを1枚ずつ使用するデッキを用います。
 
+
+## 非対応機能
+- Cross Lords
+  - 現状でパン焼き機能に不満があるので、これの対応は現状できなさそうです。
+- ドラフトルール、公式のグリムガーデン混成プレイ(BR、GG)
+  - お互いにカードをやり取りするものや複数回カード配布の必要があるものは難しいです。
 ## 問い合わせ
 フォーマット追加や導入、機能などに関する相談は[@tolt_santyoku](https://twitter.com/tolt_santyoku)にお問い合わせください。
