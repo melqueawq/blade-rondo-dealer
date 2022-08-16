@@ -75,6 +75,18 @@ module.exports = {
     async execute(interaction) {
       // コマンド詳細表示
       global.logger.info(`${interaction.channelId} : /newgame [${interaction.options.getString('フォーマット')}] [${interaction.options.getUser('プレイヤー1').tag}] [${interaction.options.getUser('プレイヤー2').tag}]`);
+      
+      try {
+        interaction.options.getSubcommand()
+      } catch (error) {
+        await interaction.reply(`
+エラー: サブコマンドが指定されていません。
+/newgameの後にサブコマンドを指定して実行してください。詳細については/helpをご参照ください。
+            `);
+        global.logger.error(error);
+        return;
+      }
+
 
       // 初手送信
       const hands = createHands(interaction);
