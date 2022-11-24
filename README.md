@@ -34,6 +34,10 @@ https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permission
   ```
   /newgame hybrid [フォーマット] [ユーザー1] [ユーザー2]
   ```
+- Stella Monolith
+  ```
+  /newgame stellamonolith [ユーザー1] [ユーザー2]
+  ```
 
 入力例1：マリアとソーニャでBlade Rondo(無印)の対戦を行う場合  
 ```
@@ -59,6 +63,7 @@ https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permission
 - 混成プレイ(詳細は[こちら](#混成プレイのカードプールについて))
   - ブレイドシュトローム(公式の無印、Night Theater混成フォーマット)  
   - 2作品全カード混成プレイ
+- Stella Monolith王女カード配布
 
 フォーマット入力の際は入力候補による補完を利用して入力してください。
     

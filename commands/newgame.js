@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const cardList = require("../data/cardlist.json");
 const cardSets = require("../data/cardsets.json");
+const stellaMonolith = require("../data/stellaMonolith.json")
 
 module.exports = {
   data:
@@ -68,13 +69,27 @@ module.exports = {
             option.setName('プレイヤー2')
               .setDescription('対戦する2人目のユーザーを指定。')
               .setRequired(true)
+        ))
+      .addSubcommand(subcommand =>
+        subcommand
+          .setName('stellamonolith')
+          .setDescription('Stella Monolithの新しいゲームを作成します。')
+          .addUserOption(option =>
+            option.setName('プレイヤー1')
+              .setDescription('対戦する1人目のユーザーを指定。')
+              .setRequired(true)
+          )
+          .addUserOption(option =>
+            option.setName('プレイヤー2')
+              .setDescription('対戦する2人目のユーザーを指定。')
+              .setRequired(true)
           )),
   
   
     // コマンド実行時処理
     async execute(interaction) {
       // コマンド詳細表示
-      global.logger.info(`${interaction.channelId} : /newgame [${interaction.options.getString('フォーマット')}] [${interaction.options.getUser('プレイヤー1').tag}] [${interaction.options.getUser('プレイヤー2').tag}]`);
+      global.logger.info(`${interaction.channelId} : /newgame [${interaction.options.getSubcommand()}] [${interaction.options.getString('フォーマット')}] [${interaction.options.getUser('プレイヤー1').tag}] [${interaction.options.getUser('プレイヤー2').tag}]`);
       
       try {
         interaction.options.getSubcommand()
@@ -125,13 +140,21 @@ function createHands(interaction) {
   let deck = [];
   let return_array = [];
 
-  const cardSet = cardSets[format];
-
+  let cardSet;
+  
   // カードリストから山札情報を取得
-  cardSet.cards.forEach(name => {
-    let index = cardList.findIndex(data => data.name === name);
-    deck.push(cardList[index]);
-  });
+  if (interaction.options.getSubcommand() == "stellamonolith") {
+    // stella Monolithは別処理
+    deck = stellaMonolith["cardList"];
+    cardSet = stellaMonolith["rule"];
+  } else {
+    cardSet = cardSets[format];
+    cardSet.cards.forEach(name => {
+      let index = cardList.findIndex(data => data.name === name);
+      deck.push(cardList[index]);
+    });
+  }
+
 
   // 山札のシャッフル
   for (let i = deck.length - 1; i > 0; i--){
@@ -147,21 +170,17 @@ function createHands(interaction) {
     let hand = [];
     
     if(cardSet.name === "Bread Rondo"){
-      // bread rondoは10枚のみ
-      hand = deck.splice(0, 10).sort((a, b) => { return a.number < b.number ? -1 : 1 });
-      
-      // パン情報初期化もする
+      // パン情報を初期化する
       global.breads[interaction.channelId] = ["パンゴーレム", "ブリオッシュ", "マフィン", "カレーパン", "サンドイッチ", "チョココロネ", "ベーグル", "アンパン"];
-
-    }else{
-      hand = deck.splice(0,15).sort((a,b)=>{return a.number < b.number ? -1 : 1});
     }
+    
+    hand = deck.splice(0, cardSet.hand).sort((a,b)=>{return a.number < b.number ? -1 : 1});
     
     // 送信するテキストを生成
     let message = "対戦ルール：" + cardSet.name + "\n";
     hand.forEach(e => {
       // アイコン, カード番号, カード名, 改行コード
-      if(cardSet.name === "Bread Rondo"){
+      if(cardSet.name === "Bread Rondo" || cardSet.name === "Stella Monolith"){
         // bread rondoはカード番号なし
         message += typeIcon(e.type) + "  " + e.name + "\n"
       }else{

@@ -1,0 +1,43 @@
+{
+  "cardList":[
+    {
+      "number": "1",
+      "name":"剣の国のヘルベチカ",
+      "type":"princess"
+    },
+    {
+      "number": "2",
+      "name":"霞の国のユキノ",
+      "type":"princess"
+    },
+    {
+      "number": "3",
+      "name":"楔の国のシスティーナ",
+      "type":"princess"
+    },
+    {
+      "number": "4",
+      "name":"岬の国のラフラハナ",
+      "type":"princess"
+    },
+    {
+      "number": "5",
+      "name":"雅の国のシャングリラ",
+      "type":"princess"
+    },
+    {
+      "number": "6",
+      "name":"栞の国のニオベ",
+      "type":"princess"
+    },
+    {
+      "number": "7",
+      "name":"不可知の国のゲルトルード",
+      "type":"princess"
+    }
+  ],
+  "rule":{
+    "name": "Stella Monolith",
+    "hand": 3
+  }
+}
