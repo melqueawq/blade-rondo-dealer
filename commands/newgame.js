@@ -145,7 +145,7 @@ function createHands(interaction) {
   // カードリストから山札情報を取得
   if (interaction.options.getSubcommand() == "stellamonolith") {
     // stella Monolithは別処理
-    deck = stellaMonolith["cardList"];
+    deck = deck.concat(stellaMonolith["cardList"]);
     cardSet = stellaMonolith["rule"];
   } else {
     cardSet = cardSets[format];
