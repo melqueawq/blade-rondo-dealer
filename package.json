@@ -16,8 +16,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon main.js",
-    "test": "node main.js",
+    "start": "node main.js",
+    "test": "nodemon main.js",
     "daemon-start": "forever start main.js",
     "daemon-stop": "forever stop main.js",
     "deploy-commands": "node deploy-commands.js",

@@ -1,1 +1,1 @@
-worker: yarn daemon-start
+worker: yarn start
