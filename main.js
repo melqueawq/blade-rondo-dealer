@@ -18,10 +18,10 @@ global.logger = log4js.getLogger();
 const fs = require('fs');
 
 // 必要クラス読み込み
-const { Client, Collection, Intents, MessageActionRow, MessageSelectMenu } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, MessageActionRow, MessageSelectMenu } = require('discord.js');
 
 // インスタンス作成
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // コマンド読み込み
 client.commands = new Collection(); //新しいインスタンスを作成します

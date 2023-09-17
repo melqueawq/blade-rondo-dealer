@@ -5,10 +5,7 @@
   "main": "main.js",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/builders": "^0.13.0",
-    "@discordjs/rest": "^0.4.1",
-    "discord-api-types": "^0.32.1",
-    "discord.js": "latest",
+    "discord.js": "^14.13.0",
     "dotenv": "^10.0.0",
     "forever": "^4.0.3",
     "log4js": "^6.3.0",
@@ -22,5 +19,8 @@
     "daemon-stop": "forever stop main.js",
     "deploy-commands": "node deploy-commands.js",
     "deploy-commands-global": "node deploy-commands-global.js"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
