@@ -17,7 +17,8 @@
     "deploy-commands-global": "node deploy-commands-global.js"
   },
   "engines": {
-    "node": "18.x"
+    "node": "18.x",
+    "npm": "10.x"
   },
   "volta": {
     "node": "18.19.0"
