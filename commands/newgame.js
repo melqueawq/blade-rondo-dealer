@@ -74,7 +74,7 @@ module.exports = {
       .addSubcommand(subcommand =>
         subcommand
           .setName('stellamonolith')
-          .setDescription('Stella Monolithの新しいゲームを作成します。')
+          .setDescription('Stella Monolithの王女カードを配布します。')
           .addUserOption(option =>
             option.setName('プレイヤー1')
               .setDescription('対戦する1人目のユーザーを指定。')
@@ -152,16 +152,17 @@ function createHands(interaction) {
   const format = interaction.options.getString('フォーマット');
   const players = [interaction.options.getUser('プレイヤー1'), interaction.options.getUser('プレイヤー2')];
   let deck = [];
-  let return_array = [];
+  let returnArray = [];
 
   let cardSet;
+  let noNumberCardSet = ["Bread Rondo","Stella Monolith","DarkOne"];
   
   // カードリストから山札情報を取得
   if (interaction.options.getSubcommand() == "stellamonolith") {
     // stella Monolith
     deck = deck.concat(stellaMonolith["cardList"]);
     cardSet = stellaMonolith["rule"];
-  } else if (interaction.options.getSubcommand() == "darkOne") {
+  } else if (interaction.options.getSubcommand() == "darkone") {
     // darkOne
     deck = deck.concat(darkOne["cardList"]);
     cardSet = darkOne["rule"];
@@ -198,7 +199,7 @@ function createHands(interaction) {
     let message = "対戦ルール：" + cardSet.name + "\n";
     hand.forEach(e => {
       // アイコン, カード番号, カード名, 改行コード
-      if(cardSet.name === "Bread Rondo" || cardSet.name === "Stella Monolith"){
+      if(noNumberCardSet.includes(cardSet.name)){
         // bread rondoはカード番号なし
         message += typeIcon(e.type) + "  " + e.name + "\n"
       }else{
@@ -208,10 +209,10 @@ function createHands(interaction) {
     });
     
 
-    return_array.push({ 'player': players[i], 'message': message });
+    returnArray.push({ 'player': players[i], 'message': message });
   }
 
-  return return_array;
+  return returnArray;
 }
 
 // アイコン取得
@@ -227,6 +228,10 @@ function typeIcon(type){
       return ":tools:";
     case "response":
       return ":mouse_trap:";
+    case "princess":
+      return ":crown:"
+    case "relic":
+      return ":gem:"
     default:
       return "";
   }

@@ -10,11 +10,23 @@ https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permission
 
 ## これは何？
 [Domina Games](https://www.dominagames.com/)様から大好評販売中の2人対戦ボードゲームシリーズである
-『Blade Rondo』シリーズの対戦をDiscordを通じて行うためのbotです。
+『Blade Rondo』シリーズ及びいくつかのゲームの対戦をDiscordを通じて行うためのbotです。
 
 『Blade Rondo』シリーズは1つの山札を各プレイヤーに分け合う都合上リモート対戦はそのままでは不可能ですが、
 15枚をランダムに配るbotによってオンライン対戦を実現することができます。
 
+## 対応ゲーム
+リンクはすべて公式サイトに遷移します。
+
+- Blade Rondoシリーズ
+  - [Blade Rondo](https://www.dominagames.com/blade-rondo)
+  - [Blade Rondo Night Theater](https://www.dominagames.com/nighttheater)
+  - [Blade Rondo Grim Garden](https://www.dominagames.com/grimgarden)
+  - [Blade Rondo Frost Veil](https://www.dominagames.com/frostveil)
+  - [Blade Rondo Lost Dream](https://www.dominagames.com/lostdream)
+- [Bread Rondo](https://www.dominagames.com/bread-rondo-sp/)
+- [Stella Monolith](https://www.dominagames.com/stellamonolith)
+- [DarkOne](https://www.dominagames.com/darkone)
 
 ## つかいかた
 1. botをサーバーに招待する
@@ -64,6 +76,7 @@ https://discord.com/api/oauth2/authorize?client_id=829716768661438496&permission
   - ブレイドシュトローム(公式の無印、Night Theater混成フォーマット)  
   - 2作品全カード混成プレイ
 - Stella Monolith王女カード配布
+- DarkOne遺物カード配布
 
 フォーマット入力の際は入力候補による補完を利用して入力してください。
     
