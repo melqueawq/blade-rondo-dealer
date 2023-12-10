@@ -1,0 +1,58 @@
+{
+  "cardList":[
+    {
+      "number": "1",
+      "name":"慈愛の腕",
+      "type":"relic"
+    },
+    {
+      "number": "2",
+      "name":"森の刻印",
+      "type":"relic"
+    },
+    {
+      "number": "3",
+      "name":"舌禍録",
+      "type":"relic"
+    },
+    {
+      "number": "4",
+      "name":"闇黒灯",
+      "type":"relic"
+    },
+    {
+      "number": "5",
+      "name":"黒竜の爪",
+      "type":"relic"
+    },
+    {
+      "number": "6",
+      "name":"竜殺者のガントレット",
+      "type":"relic"
+    },
+    {
+      "number": "7",
+      "name":"孤独な少女のダイヤモンド",
+      "type":"relic"
+    },
+    {
+      "number": "8",
+      "name":"ビビアンの杖",
+      "type":"relic"
+    },
+    {
+      "number": "9",
+      "name":"影の外套",
+      "type":"relic"
+    },
+    {
+      "number": "10",
+      "name":"星霜のオーブ",
+      "type":"relic"
+    }
+  ],
+  "rule":{
+    "name": "DarkOne",
+    "hand": 3
+  }
+}

@@ -2,7 +2,8 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const cardList = require("../data/cardlist.json");
 const cardSets = require("../data/cardsets.json");
-const stellaMonolith = require("../data/stellaMonolith.json")
+const stellaMonolith = require("../data/stellaMonolith.json");
+const darkOne = require("../data/darkOne.json");
 
 module.exports = {
   data:
@@ -83,8 +84,21 @@ module.exports = {
             option.setName('プレイヤー2')
               .setDescription('対戦する2人目のユーザーを指定。')
               .setRequired(true)
-          )),
-  
+          ))
+        .addSubcommand(subcommand =>
+          subcommand
+            .setName('darkone')
+            .setDescription('DarkOneの遺物カードを配布します。')
+            .addUserOption(option =>
+              option.setName('プレイヤー1')
+                .setDescription('対戦する1人目のユーザーを指定。')
+                .setRequired(true)
+            )
+            .addUserOption(option =>
+              option.setName('プレイヤー2')
+                .setDescription('対戦する2人目のユーザーを指定。')
+                .setRequired(true)
+            )),
   
     // コマンド実行時処理
     async execute(interaction) {
@@ -144,9 +158,13 @@ function createHands(interaction) {
   
   // カードリストから山札情報を取得
   if (interaction.options.getSubcommand() == "stellamonolith") {
-    // stella Monolithは別処理
+    // stella Monolith
     deck = deck.concat(stellaMonolith["cardList"]);
     cardSet = stellaMonolith["rule"];
+  } else if (interaction.options.getSubcommand() == "darkOne") {
+    // darkOne
+    deck = deck.concat(darkOne["cardList"]);
+    cardSet = darkOne["rule"];
   } else {
     cardSet = cardSets[format];
     cardSet.cards.forEach(name => {
